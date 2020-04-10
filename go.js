@@ -43,9 +43,6 @@ spritesheetname = usePng8 ? "images/spritesheet-png8.json" : "images/spritesheet
 // load sprite sheet image + data file, call setup() if completed
 PIXI.Loader.shared
     .add(spritesheetname)
-    .add("assets/walking.json")
-    .add("assets/jump_start.json")
-    .add("assets/jump_end.json")
     .add("assets/suhaj_walk.json")
     .add("assets/suhaj_jump.json")
     .add("assets/explosion.json")
