@@ -1,0 +1,285 @@
+{"frames": {
+
+"suhaj_wrenches_000.png":
+{
+	"frame": {"x":0,"y":0,"w":258,"h":214},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":258,"h":214},
+	"sourceSize": {"w":258,"h":214},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"suhaj_wrenches_001.png":
+{
+	"frame": {"x":258,"y":0,"w":258,"h":214},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":258,"h":214},
+	"sourceSize": {"w":258,"h":214},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"suhaj_wrenches_002.png":
+{
+	"frame": {"x":516,"y":0,"w":258,"h":214},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":258,"h":214},
+	"sourceSize": {"w":258,"h":214},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"suhaj_wrenches_003.png":
+{
+	"frame": {"x":774,"y":0,"w":258,"h":214},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":258,"h":214},
+	"sourceSize": {"w":258,"h":214},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"suhaj_wrenches_004.png":
+{
+	"frame": {"x":1032,"y":0,"w":258,"h":214},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":258,"h":214},
+	"sourceSize": {"w":258,"h":214},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"suhaj_wrenches_005.png":
+{
+	"frame": {"x":1290,"y":0,"w":258,"h":214},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":258,"h":214},
+	"sourceSize": {"w":258,"h":214},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"suhaj_wrenches_006.png":
+{
+	"frame": {"x":0,"y":214,"w":258,"h":214},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":258,"h":214},
+	"sourceSize": {"w":258,"h":214},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"suhaj_wrenches_007.png":
+{
+	"frame": {"x":258,"y":214,"w":258,"h":214},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":258,"h":214},
+	"sourceSize": {"w":258,"h":214},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"suhaj_wrenches_008.png":
+{
+	"frame": {"x":516,"y":214,"w":258,"h":214},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":258,"h":214},
+	"sourceSize": {"w":258,"h":214},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"suhaj_wrenches_009.png":
+{
+	"frame": {"x":774,"y":214,"w":258,"h":214},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":258,"h":214},
+	"sourceSize": {"w":258,"h":214},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"suhaj_wrenches_010.png":
+{
+	"frame": {"x":1032,"y":214,"w":258,"h":214},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":258,"h":214},
+	"sourceSize": {"w":258,"h":214},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"suhaj_wrenches_011.png":
+{
+	"frame": {"x":1290,"y":214,"w":258,"h":214},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":258,"h":214},
+	"sourceSize": {"w":258,"h":214},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"suhaj_wrenches_012.png":
+{
+	"frame": {"x":0,"y":428,"w":258,"h":214},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":258,"h":214},
+	"sourceSize": {"w":258,"h":214},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"suhaj_wrenches_013.png":
+{
+	"frame": {"x":258,"y":428,"w":258,"h":214},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":258,"h":214},
+	"sourceSize": {"w":258,"h":214},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"suhaj_wrenches_014.png":
+{
+	"frame": {"x":516,"y":428,"w":258,"h":214},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":258,"h":214},
+	"sourceSize": {"w":258,"h":214},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"suhaj_wrenches_015.png":
+{
+	"frame": {"x":774,"y":428,"w":258,"h":214},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":258,"h":214},
+	"sourceSize": {"w":258,"h":214},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"suhaj_wrenches_016.png":
+{
+	"frame": {"x":1032,"y":428,"w":258,"h":214},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":258,"h":214},
+	"sourceSize": {"w":258,"h":214},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"suhaj_wrenches_017.png":
+{
+	"frame": {"x":1290,"y":428,"w":258,"h":214},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":258,"h":214},
+	"sourceSize": {"w":258,"h":214},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"suhaj_wrenches_018.png":
+{
+	"frame": {"x":0,"y":642,"w":258,"h":214},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":258,"h":214},
+	"sourceSize": {"w":258,"h":214},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"suhaj_wrenches_019.png":
+{
+	"frame": {"x":258,"y":642,"w":258,"h":214},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":258,"h":214},
+	"sourceSize": {"w":258,"h":214},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"suhaj_wrenches_020.png":
+{
+	"frame": {"x":516,"y":642,"w":258,"h":214},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":258,"h":214},
+	"sourceSize": {"w":258,"h":214},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"suhaj_wrenches_021.png":
+{
+	"frame": {"x":774,"y":642,"w":258,"h":214},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":258,"h":214},
+	"sourceSize": {"w":258,"h":214},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"suhaj_wrenches_022.png":
+{
+	"frame": {"x":1032,"y":642,"w":258,"h":214},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":258,"h":214},
+	"sourceSize": {"w":258,"h":214},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"suhaj_wrenches_023.png":
+{
+	"frame": {"x":1290,"y":642,"w":258,"h":214},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":258,"h":214},
+	"sourceSize": {"w":258,"h":214},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"suhaj_wrenches_024.png":
+{
+	"frame": {"x":0,"y":856,"w":258,"h":214},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":258,"h":214},
+	"sourceSize": {"w":258,"h":214},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"suhaj_wrenches_025.png":
+{
+	"frame": {"x":258,"y":856,"w":258,"h":214},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":258,"h":214},
+	"sourceSize": {"w":258,"h":214},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"suhaj_wrenches_026.png":
+{
+	"frame": {"x":516,"y":856,"w":258,"h":214},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":258,"h":214},
+	"sourceSize": {"w":258,"h":214},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"suhaj_wrenches_027.png":
+{
+	"frame": {"x":774,"y":856,"w":258,"h":214},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":258,"h":214},
+	"sourceSize": {"w":258,"h":214},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"suhaj_wrenches_028.png":
+{
+	"frame": {"x":1032,"y":856,"w":258,"h":214},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":258,"h":214},
+	"sourceSize": {"w":258,"h":214},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"suhaj_wrenches_029.png":
+{
+	"frame": {"x":1290,"y":856,"w":258,"h":214},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":258,"h":214},
+	"sourceSize": {"w":258,"h":214},
+	"anchor": {"x":0.5,"y":0.5}
+}},
+"animations": {
+	"suhaj_wrenches": ["suhaj_wrenches_000.png","suhaj_wrenches_001.png","suhaj_wrenches_002.png","suhaj_wrenches_003.png","suhaj_wrenches_004.png","suhaj_wrenches_005.png","suhaj_wrenches_006.png","suhaj_wrenches_007.png","suhaj_wrenches_008.png","suhaj_wrenches_009.png","suhaj_wrenches_010.png","suhaj_wrenches_011.png","suhaj_wrenches_012.png","suhaj_wrenches_013.png","suhaj_wrenches_014.png","suhaj_wrenches_015.png","suhaj_wrenches_016.png","suhaj_wrenches_017.png","suhaj_wrenches_018.png","suhaj_wrenches_019.png","suhaj_wrenches_020.png","suhaj_wrenches_021.png","suhaj_wrenches_022.png","suhaj_wrenches_023.png","suhaj_wrenches_024.png","suhaj_wrenches_025.png","suhaj_wrenches_026.png","suhaj_wrenches_027.png","suhaj_wrenches_028.png","suhaj_wrenches_029.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "suhaj_wrenches.png",
+	"format": "RGBA8888",
+	"size": {"w":1548,"h":1070},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:521b21330698af1098f374e70e678af7:3fb6ffaefcc2f74f2c1a9d7ae351d560:2d097b32bbfeadcacfcab6b11ed2c776$"
+}
+}

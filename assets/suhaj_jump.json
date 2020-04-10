@@ -395,9 +395,18 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":213,"h":352},
 	"sourceSize": {"w":213,"h":352},
 	"anchor": {"x":0.5,"y":0.5}
+},
+"suhaj_jump_044.png":
+{
+	"frame": {"x":1704,"y":1408,"w":213,"h":352},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":213,"h":352},
+	"sourceSize": {"w":213,"h":352},
+	"anchor": {"x":0.5,"y":0.5}
 }},
 "animations": {
-	"suhaj_jump": ["suhaj_jump_000.png","suhaj_jump_001.png","suhaj_jump_002.png","suhaj_jump_003.png","suhaj_jump_004.png","suhaj_jump_005.png","suhaj_jump_006.png","suhaj_jump_007.png","suhaj_jump_008.png","suhaj_jump_009.png","suhaj_jump_010.png","suhaj_jump_011.png","suhaj_jump_012.png","suhaj_jump_013.png","suhaj_jump_014.png","suhaj_jump_015.png","suhaj_jump_016.png","suhaj_jump_017.png","suhaj_jump_018.png","suhaj_jump_019.png","suhaj_jump_020.png","suhaj_jump_021.png","suhaj_jump_022.png","suhaj_jump_023.png","suhaj_jump_024.png","suhaj_jump_025.png","suhaj_jump_026.png","suhaj_jump_027.png","suhaj_jump_028.png","suhaj_jump_029.png","suhaj_jump_030.png","suhaj_jump_031.png","suhaj_jump_032.png","suhaj_jump_033.png","suhaj_jump_034.png","suhaj_jump_035.png","suhaj_jump_036.png","suhaj_jump_037.png","suhaj_jump_038.png","suhaj_jump_039.png","suhaj_jump_040.png","suhaj_jump_041.png","suhaj_jump_042.png","suhaj_jump_043.png"]
+	"suhaj_jump": ["suhaj_jump_000.png","suhaj_jump_001.png","suhaj_jump_002.png","suhaj_jump_003.png","suhaj_jump_004.png","suhaj_jump_005.png","suhaj_jump_006.png","suhaj_jump_007.png","suhaj_jump_008.png","suhaj_jump_009.png","suhaj_jump_010.png","suhaj_jump_011.png","suhaj_jump_012.png","suhaj_jump_013.png","suhaj_jump_014.png","suhaj_jump_015.png","suhaj_jump_016.png","suhaj_jump_017.png","suhaj_jump_018.png","suhaj_jump_019.png","suhaj_jump_020.png","suhaj_jump_021.png","suhaj_jump_022.png","suhaj_jump_023.png","suhaj_jump_024.png","suhaj_jump_025.png","suhaj_jump_026.png","suhaj_jump_027.png","suhaj_jump_028.png","suhaj_jump_029.png","suhaj_jump_030.png","suhaj_jump_031.png","suhaj_jump_032.png","suhaj_jump_033.png","suhaj_jump_034.png","suhaj_jump_035.png","suhaj_jump_036.png","suhaj_jump_037.png","suhaj_jump_038.png","suhaj_jump_039.png","suhaj_jump_040.png","suhaj_jump_041.png","suhaj_jump_042.png","suhaj_jump_043.png","suhaj_jump_044.png"]
 },
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
@@ -406,6 +415,6 @@
 	"format": "RGBA8888",
 	"size": {"w":1917,"h":1760},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:d75c86d54480dcafa450afa9845603e6:fd61ff700f8776b784a1277b431e9919:7712f380a8be550b7ca071e3fc1a8fa2$"
+	"smartupdate": "$TexturePacker:SmartUpdate:eb4e4af484b79dbed4fdc6d7f3f75919:3b616f2eb36d571cad7cb2723190635c:7712f380a8be550b7ca071e3fc1a8fa2$"
 }
 }
