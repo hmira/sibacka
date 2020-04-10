@@ -15,6 +15,11 @@
     </head>
     <body>
         <script>
+        function testAPI() {
+            console.log('Welcome!  Fetching your information.... ');
+            FB.api('/me?fields=name', function(response) {  //<-HERE ?fields=name
+                console.log('Successful login for: ' + response.name);
+        });
           window.fbAsyncInit = function() {
             FB.init({
               appId      : '2866677673420258',
@@ -34,6 +39,8 @@
              js.src = "https://connect.facebook.net/en_US/sdk.js";
              fjs.parentNode.insertBefore(js, fjs);
            }(document, 'script', 'facebook-jssdk'));
+
+          console.log("helou");
         </script>
         <script src="pixi.js"></script>
         <script>
