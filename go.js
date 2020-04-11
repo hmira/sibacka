@@ -104,7 +104,7 @@ function setup() {
     app.stage.scale.y = app.view.height / background.height;
 
     suhajWalk = new PIXI.AnimatedSprite(suhajWalkSheet.animations["suhaj_walk"]);
-    suhajWalk.position.set(400, background.height - 350);
+    suhajWalk.position.set(400, background.height - 390);
     suhajWalk.animationSpeed = 1;
     suhajWalk.renderable = true;
     suhajWalk.scale.x = 2;
@@ -127,7 +127,7 @@ function setup() {
 
 //    suhajWrenches = new PIXI.AnimatedSprite(suhajWrenchesSheet.animations["suhaj_wrenches"]);
     suhajWrenches = PIXI.AnimatedSprite.fromFrames(suhajWrenchesFrames);
-    suhajWrenches.anchor.set(0.5)
+    suhajWrenches.anchor.set(0.32302,0.72196)
     suhajWrenches.position.set(400, background.height - 390);
     suhajWrenches.animationSpeed = 0.5;
     suhajWrenches.renderable = false;
