@@ -43,28 +43,53 @@
         </script>
         <script>
         function myFbLogin() {
-            FB.login();
-            let fbID;
-            FB.api('/me', function(response) {
-                fbID=response.id;
-                console.log('Successful login for: ' + response.name);
+            FB.login(function(response) {
+                if (response.authResponse) {
+                    console.log('Welcome!  Fetching your information.... ');
+                    FB.api('/me', function(response) {
+                        console.log('Good to see you, ' + response.name + '.');
+                    });
+
+                    FB.api(
+                        '/'+fbID+'/picture',
+                        'GET',
+                        {"redirect":"false","type":"large","width":"400","height":"400"},
+                        function(response) {
+                            console.log(response);
+                            // Insert your code here
+                            if (response.data.url) {
+                                fb_img = document.getElementById("fb_pic_img");
+                                fb_img.src = response.data.url;
+                                console.log("should set img src");
+                            }
+                        });
+                } else {
+                    console.log('User cancelled login or did not fully authorize.');
+                }
             });
 
-            console.log(fbID);
+            // FB.login();
+            // let fbID;
+            // FB.api('/me', function(response) {
+            //     fbID=response.id;
+            //     console.log('Successful login for: ' + response.name);
+            // });
 
-            FB.api(
-                '/'+fbID+'/picture',
-                'GET',
-                {"redirect":"false","type":"large","width":"400","height":"400"},
-                function(response) {
-                    console.log(response);
-                    // Insert your code here
-                    if (response.data.url) {
-                        fb_img = document.getElementById("fb_pic_img");
-                        fb_img.src = response.data.url;
-                        console.log("should set img src");
-                    }
-                });
+            // console.log(fbID);
+
+            // FB.api(
+            //     '/'+fbID+'/picture',
+            //     'GET',
+            //     {"redirect":"false","type":"large","width":"400","height":"400"},
+            //     function(response) {
+            //         console.log(response);
+            //         // Insert your code here
+            //         if (response.data.url) {
+            //             fb_img = document.getElementById("fb_pic_img");
+            //             fb_img.src = response.data.url;
+            //             console.log("should set img src");
+            //         }
+            //     });
         }
 
         function getData() {
