@@ -46,7 +46,8 @@
         <script>
         function myFbLogin() {
             console.log("myFbLogin starts");
-            FB.login(function(response) {
+            //FB.login(function(response) {
+            FB.getLoginStatus(function(response) {
                 console.log(response);
                 if (response.authResponse) {
                     console.log('Welcome!  Fetching your information.... ');
