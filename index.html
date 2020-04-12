@@ -51,21 +51,23 @@
                     FB.api('/me', function(response) {
                         console.log('Good to see you, ' + response.name + '.');
                         fbID = response.id;
+
+                        FB.api(
+                            '/'+fbID+'/picture',
+                            'GET',
+                            {"redirect":"false","type":"large","width":"400","height":"400"},
+                            function(response) {
+                                console.log(response);
+                                // Insert your code here
+                                if (response.data.url) {
+                                    fb_img = document.getElementById("fb_pic_img");
+                                    fb_img.src = response.data.url;
+                                    console.log("should set img src");
+                                }
+                        });
                     });
 
-                    FB.api(
-                        '/'+fbID+'/picture',
-                        'GET',
-                        {"redirect":"false","type":"large","width":"400","height":"400"},
-                        function(response) {
-                            console.log(response);
-                            // Insert your code here
-                            if (response.data.url) {
-                                fb_img = document.getElementById("fb_pic_img");
-                                fb_img.src = response.data.url;
-                                console.log("should set img src");
-                            }
-                        });
+
                 } else {
                     console.log('User cancelled login or did not fully authorize.');
                 }
