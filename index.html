@@ -42,12 +42,14 @@
           console.log("helou");
         </script>
         <script>
-        myFbLogin() {
+        function myFbLogin() {
             let fbID;
             FB.api('/me', function(response) {
                 fbID=response.id;
                 console.log('Successful login for: ' + response.name);
             });
+
+            console.log(fbID);
 
             FB.api(
                 '/'+fbID+'/picture',
