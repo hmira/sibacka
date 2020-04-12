@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/d3js/5.15.0/d3.min.js"></script>
         <title>Šibačka | Veľká noc v čase COVID</title>
         <meta name="description" content="Vyšibte svoju známu pomocou prvej online šibačky">
         <style>
@@ -14,6 +15,9 @@
         </style>
     </head>
     <body>
+        <div id="fb_pic" class="fb_pic" style="background: red;width: 60px;height: 60px;position: absolute;top: 10px;left: 10px;border-radius: 50%;border: 2px solid black;">
+            <img alt="profile_pic" id="fb_pic_img" style="width: 100%;height: 100%; border-radius: 50%;">
+        </div>
         <script>
           window.fbAsyncInit = function() {
             FB.init({
@@ -36,6 +40,29 @@
            }(document, 'script', 'facebook-jssdk'));
 
           console.log("helou");
+        </script>
+        <script>
+        $(document).load(function(){
+            let fbID;
+            FB.api('/me', function(response) {
+                fbID=response.id;
+                console.log('Successful login for: ' + response.name);
+            });
+
+            FB.api(
+                '/'+fbID+'/picture',
+                'GET',
+                {"redirect":"false","type":"large","width":"400","height":"400"},
+                function(response) {
+                    console.log(response);
+                    // Insert your code here
+                    if (response.data.url) {
+                        fb_img = document.getElementById("fb_pic_img");
+                        fb_img.src = response.data.url;
+                        console.log("should set img src");
+                    }
+                });
+        });
         </script>
         <script src="pixi.js"></script>
         <script>
