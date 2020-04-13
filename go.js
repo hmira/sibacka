@@ -16,7 +16,7 @@ window.addEventListener("resize", resize(app));
 
 document.body.appendChild(app.view);
 
-let animatedCapguy, walkingGuy, jumpGuyStart, jumpGuyEnd, background, background2, spritesheetname;
+let animatedCapguy, walkingGuy, jumpGuyStart, jumpGuyEnd, background, background2, wrenches;
 
 let topBackgroundOffset;
 
@@ -28,39 +28,52 @@ let postition = 0;
 
 let suhajState = STATE_WALKING;
 
+const suhajYoffset = 100;
+const wrenchesYOffset = 178;
+
 // spritesheetname = usePng8 ? "images/spritesheet-png8.json" : "images/spritesheet.json";
 
+
 const suhajWrenchesFrames = [
-"assets/suhaj_wrenches_hq/suhaj_wrenches_000.png",
-"assets/suhaj_wrenches_hq/suhaj_wrenches_001.png",
-"assets/suhaj_wrenches_hq/suhaj_wrenches_002.png",
-"assets/suhaj_wrenches_hq/suhaj_wrenches_003.png",
-"assets/suhaj_wrenches_hq/suhaj_wrenches_004.png",
-"assets/suhaj_wrenches_hq/suhaj_wrenches_005.png",
-"assets/suhaj_wrenches_hq/suhaj_wrenches_006.png",
-"assets/suhaj_wrenches_hq/suhaj_wrenches_007.png",
-"assets/suhaj_wrenches_hq/suhaj_wrenches_008.png",
-"assets/suhaj_wrenches_hq/suhaj_wrenches_009.png",
-"assets/suhaj_wrenches_hq/suhaj_wrenches_010.png",
-"assets/suhaj_wrenches_hq/suhaj_wrenches_011.png",
-"assets/suhaj_wrenches_hq/suhaj_wrenches_012.png",
-"assets/suhaj_wrenches_hq/suhaj_wrenches_013.png",
-"assets/suhaj_wrenches_hq/suhaj_wrenches_014.png",
-"assets/suhaj_wrenches_hq/suhaj_wrenches_015.png",
-"assets/suhaj_wrenches_hq/suhaj_wrenches_016.png",
-"assets/suhaj_wrenches_hq/suhaj_wrenches_017.png",
-"assets/suhaj_wrenches_hq/suhaj_wrenches_018.png",
-"assets/suhaj_wrenches_hq/suhaj_wrenches_019.png",
-"assets/suhaj_wrenches_hq/suhaj_wrenches_020.png",
-"assets/suhaj_wrenches_hq/suhaj_wrenches_021.png",
-"assets/suhaj_wrenches_hq/suhaj_wrenches_022.png",
-"assets/suhaj_wrenches_hq/suhaj_wrenches_023.png",
-"assets/suhaj_wrenches_hq/suhaj_wrenches_024.png",
-"assets/suhaj_wrenches_hq/suhaj_wrenches_025.png",
-"assets/suhaj_wrenches_hq/suhaj_wrenches_026.png",
-"assets/suhaj_wrenches_hq/suhaj_wrenches_027.png",
-"assets/suhaj_wrenches_hq/suhaj_wrenches_028.png",
-"assets/suhaj_wrenches_hq/suhaj_wrenches_029.png"];
+"assets/suhaj_wrenches_fps/hit_by_wrenches_60fps_023.png",
+"assets/suhaj_wrenches_fps/hit_by_wrenches_60fps_024.png",
+"assets/suhaj_wrenches_fps/hit_by_wrenches_60fps_025.png",
+"assets/suhaj_wrenches_fps/hit_by_wrenches_60fps_026.png",
+"assets/suhaj_wrenches_fps/hit_by_wrenches_60fps_027.png",
+"assets/suhaj_wrenches_fps/hit_by_wrenches_60fps_028.png",
+"assets/suhaj_wrenches_fps/hit_by_wrenches_60fps_029.png",
+"assets/suhaj_wrenches_fps/hit_by_wrenches_60fps_030.png",
+"assets/suhaj_wrenches_fps/hit_by_wrenches_60fps_031.png",
+"assets/suhaj_wrenches_fps/hit_by_wrenches_60fps_032.png",
+"assets/suhaj_wrenches_fps/hit_by_wrenches_60fps_033.png",
+"assets/suhaj_wrenches_fps/hit_by_wrenches_60fps_034.png",
+"assets/suhaj_wrenches_fps/hit_by_wrenches_60fps_035.png",
+"assets/suhaj_wrenches_fps/hit_by_wrenches_60fps_036.png",
+"assets/suhaj_wrenches_fps/hit_by_wrenches_60fps_037.png",
+"assets/suhaj_wrenches_fps/hit_by_wrenches_60fps_038.png",
+"assets/suhaj_wrenches_fps/hit_by_wrenches_60fps_039.png",
+"assets/suhaj_wrenches_fps/hit_by_wrenches_60fps_040.png",
+"assets/suhaj_wrenches_fps/hit_by_wrenches_60fps_041.png",
+"assets/suhaj_wrenches_fps/hit_by_wrenches_60fps_042.png",
+"assets/suhaj_wrenches_fps/hit_by_wrenches_60fps_043.png",
+"assets/suhaj_wrenches_fps/hit_by_wrenches_60fps_044.png",
+"assets/suhaj_wrenches_fps/hit_by_wrenches_60fps_045.png",
+"assets/suhaj_wrenches_fps/hit_by_wrenches_60fps_046.png",
+"assets/suhaj_wrenches_fps/hit_by_wrenches_60fps_047.png",
+"assets/suhaj_wrenches_fps/hit_by_wrenches_60fps_048.png",
+"assets/suhaj_wrenches_fps/hit_by_wrenches_60fps_049.png",
+"assets/suhaj_wrenches_fps/hit_by_wrenches_60fps_050.png",
+"assets/suhaj_wrenches_fps/hit_by_wrenches_60fps_051.png",
+"assets/suhaj_wrenches_fps/hit_by_wrenches_60fps_052.png",
+"assets/suhaj_wrenches_fps/hit_by_wrenches_60fps_053.png",
+"assets/suhaj_wrenches_fps/hit_by_wrenches_60fps_054.png",
+"assets/suhaj_wrenches_fps/hit_by_wrenches_60fps_055.png",
+"assets/suhaj_wrenches_fps/hit_by_wrenches_60fps_056.png",
+"assets/suhaj_wrenches_fps/hit_by_wrenches_60fps_057.png",
+"assets/suhaj_wrenches_fps/hit_by_wrenches_60fps_058.png",
+"assets/suhaj_wrenches_fps/hit_by_wrenches_60fps_059.png",
+"assets/suhaj_wrenches_fps/hit_by_wrenches_60fps_060.png",
+"assets/suhaj_wrenches_fps/hit_by_wrenches_60fps_061.png"];
 
 // load sprite sheet image + data file, call setup() if completed
 PIXI.Loader.shared
@@ -93,19 +106,17 @@ function setup() {
     app.stage.scale.y = app.view.height / background.height;
 
     suhajWalk = new PIXI.AnimatedSprite(suhajWalkSheet.animations["suhaj_walk"]);
-    suhajWalk.position.set(400, background.height - 100);
+    suhajWalk.position.set(400, background.height - suhajYoffset);
     suhajWalk.animationSpeed = 1;
     suhajWalk.renderable = true;
-    suhajWalk.scale.x = 1.5;
-    suhajWalk.scale.y = 1.5;
+    suhajWalk.scale.set(1.5);
     suhajWalk.play();
 
     suhajJump = new PIXI.AnimatedSprite(suhajJumpSheet.animations["suhaj_jump"]);
-    suhajJump.position.set(400, background.height - 100);
+    suhajJump.position.set(400, background.height - suhajYoffset);
     suhajJump.animationSpeed = 1;
     suhajJump.renderable = false;
-    suhajJump.scale.x = 1.5;
-    suhajJump.scale.y = 1.5;
+    suhajJump.scale.set(1.5);
     suhajJump.loop = false;
     suhajJump.stop();
     suhajJump.onComplete = function() {
@@ -114,14 +125,12 @@ function setup() {
         console.log("jump ends");
     };
 
-//    suhajWrenches = new PIXI.AnimatedSprite(suhajWrenchesSheet.animations["suhaj_wrenches"]);
     suhajWrenches = PIXI.AnimatedSprite.fromFrames(suhajWrenchesFrames);
     suhajWrenches.anchor.set(0.32302,0.72196)
-    suhajWrenches.position.set(400, background.height - 100);
-    suhajWrenches.animationSpeed = 0.5;
+    suhajWrenches.position.set(400, background.height - suhajYoffset);
+    suhajWrenches.animationSpeed = 1;
     suhajWrenches.renderable = false;
-    suhajWrenches.scale.x = 1.5;
-    suhajWrenches.scale.y = 1.5;
+    suhajWrenches.scale.set(1.5);
     suhajWrenches.loop = false;
     suhajWrenches.onComplete = function() {
         suhajState = STATE_WALKING;
@@ -133,7 +142,12 @@ function setup() {
     explosion.position.set(300, 300);
     explosion.play();
 
+    wrenches = new PIXI.Sprite(sheet.textures["rake.png"]);
+    wrenches.scale.set(1.5);
+    wrenches.position.set(WIDTH + 1, background.height - wrenchesYOffset);
+
     // add it to the stage and render!
+    app.stage.addChild(wrenches);
     app.stage.addChild(suhajWalk);
     app.stage.addChild(suhajWrenches);
     app.stage.addChild(suhajJump);
@@ -145,9 +159,10 @@ function setup() {
 
 function updateYs() {
     background.y = background2.y = topBackgroundOffset;
-    suhajWalk.y = background.height - 100 + topBackgroundOffset;
-    suhajWrenches.y = background.height - 100 + topBackgroundOffset;
-    suhajJump.y = background.height - 100 + topBackgroundOffset;
+    suhajWalk.y = background.height - suhajYoffset + topBackgroundOffset;
+    suhajWrenches.y = background.height - suhajYoffset + topBackgroundOffset;
+    suhajJump.y = background.height - suhajYoffset + topBackgroundOffset;
+    wrenches.y = background.height - wrenchesYOffset + topBackgroundOffset;
 }
 
 function gameLoop(delta) {
@@ -160,18 +175,23 @@ function gameLoop(delta) {
     //experimental game
     postition += 10;
     background.x = -(postition * 0.5);
-    background.x %= 1280 * 2;
+    background.x %= WIDTH * 2;
     if (background.x < 0) {
-        background.x += 1280 * 2;
+        background.x += WIDTH * 2;
     }
-    background.x -= 1280;
+    background.x -= WIDTH;
 
-    background2.x = -(postition * 0.5) + 1280;
-    background2.x %= 1280 * 2;
+    background2.x = -(postition * 0.5) + WIDTH;
+    background2.x %= WIDTH * 2;
     if (background2.x < 0) {
-        background2.x += 1280 * 2;
+        background2.x += WIDTH * 2;
     }
-    background2.x -= 1280;
+    background2.x -= WIDTH;
+
+    wrenches.x -= 12;
+    if (wrenches.x < -460) {
+        wrenches.x = WIDTH + 1;
+    }
 }
 
 function wrenchesHit() {
@@ -231,22 +251,12 @@ function resize (app) {
       nvh = (nvw * HEIGHT) / WIDTH;
     }
     
-    // Set the game screen size to the new values.
-    // This command only makes the screen bigger --- it does not scale the contents of the game.
-    // There will be a lot of extra room --- or missing room --- if we don't scale the stage.
-    
-    // app.renderer.resize(nvw, nvh);
-    
-    // This command scales the stage to fit the new size of the game.
     app.stage.scale.set(nvw / WIDTH, nvh / HEIGHT);
 
     app.renderer.resize(nvw, window.innerHeight);
 
     topBackgroundOffset = ((window.innerHeight - nvh) * HEIGHT) / nvh;
 
-    console.log(nvh);
     updateYs();
-    // console.log("resize:")
-    // console.log(WIDTH, HEIGHT, nvw, nvh, vpw, vph);
   };
 }
