@@ -2,6 +2,11 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <meta property="og:url" content="https://hmira.github.io/sibacka/" />
+        <meta property="og:type" content="website" 
+        <meta property="og:title" content="Šibačka počas karantény" />
+        <meta property="og:description" content="Sedíš doma a strašne by si chcel šibať?" />
+        <meta property="og:image" content="http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg" />
         <link rel="shortcut icon" type="image/png" href="favicon.png"/>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -51,6 +56,9 @@
             } else {
                 $("#button_play").prop('disabled',true);
             }
+        });
+        $("#button_play").click(function(){
+            console.log("kokot");
         });
         </script>
         <script>

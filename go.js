@@ -37,6 +37,7 @@ let suhajState = STATE_NONE;
 
 let score = 0;
 let level = 1;
+let wrenchesActive = false;
 
 const suhajYoffset = 100;
 const wrenchesYOffset = 178;
@@ -365,6 +366,10 @@ function gameLoop(delta) {
         suhajSibac.x = suhajWalk.x;
     }
 
+    if (suhajWalk.x < (background.width / 2) + 10 && suhajWalk.x > (background.width / 2) - 10) {
+        wrenchesActive = true;
+    }
+
     if (suhajState == STATE_WON) {
         if (devaDance.x > 800) {
             devaDance.x -= 2 * delta;
@@ -402,7 +407,7 @@ function gameLoop(delta) {
             bush1.x = WIDTH + 1;
         }
 
-        if (suhajState != STATE_WON) {
+        if (suhajState != STATE_WON && wrenchesActive) {
             wrenches.x -= 12;
             if (wrenches.x < -460) {
                 wrenches.x = WIDTH + 1;
