@@ -434,6 +434,7 @@ function gameLoop(delta) {
             suhajSibac.renderable = true;
             suhajSibac.gotoAndPlay(0);
             suhajState = STATE_DEVA;
+            gameFinishSuccess();
         }
     }
 
@@ -515,6 +516,7 @@ function lose() {
     lost = true;
     wrenchesActive = false;
     $("#start_play").fadeIn();
+    gameFinishAlert();
 }
 
 app.renderer.plugins.interaction.on('pointerdown', jump);
@@ -570,4 +572,12 @@ function resize (app) {
 
     updateYs();
   };
+}
+
+function gameFinishSuccess() {
+    $("#alert_bar").append('<div class="alert alert-success alert-dismissible fade show" role="success"><strong>Gratulujeme!</strong> Dievča ste úspešne vyšibali<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+}
+
+function gameFinishAlert() {
+    $("#alert_bar").append('<div class="alert alert-warning alert-dismissible fade show" role="alert"><strong>Šibač stúpil na hrable 3×</strong> Skúste si to znovu<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 }

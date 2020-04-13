@@ -10,111 +10,6 @@
         <meta property="og:image" content="https://hmira.github.io/sibacka/images/couple-resized.jpg" />
         <meta property="og:locale" content="sk" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="shortcut icon" type="image/png" href="favicon.png"/>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        <title>Šibačka | Veľká noc v čase COVID</title>
-        <meta name="description" content="Vyšibte svoju známu pomocou prvej online šibačky">
-    </head>
-    <body>
-        <div id="start_play">
-            <div class="input-group input-group-lg">
-                <input id="name_play" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" maxlength="20" placeholder="Meno">
-            </div>
-            <button id="button_play" type="button" class="btn btn-primary btn-lg btn-block" disabled>Hrať</button>
-            <a href="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https://hmira.github.io/sibacka/" target="_blank" onclick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false"><button style="width:100%; margin-top:10px;" type="button" class="btn btn-facebook btn-lg"><i class="fa fa-facebook fa-2" style="margin-right:10px;"></i> Zdieľať na facebooku</button></a>
-        </div>
-        <div id="fb_pic" class="fb_pic" style="display:none;">
-            <img alt="profile_pic" id="fb_pic_img" src="images/dummy_profile_pic.png">
-        </div>
-        <div id="fb-root"></div>
-        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/sk_SK/sdk.js#xfbml=1&version=v6.0&appId=2866677673420258&autoLogAppEvents=1"></script>
-        <div id="fb-login-button" class="fb-login-button" data-width="" data-size="large" data-button-type="login_with" data-layout="rounded" data-auto-logout-link="false" data-use-continue-as="true" data-scope="user_gender,public_profile" data-onlogin='myFbLogin();' style="display:none;"></div>
-        <script>
-          window.fbAsyncInit = function() {
-            FB.init({
-              appId      : '2866677673420258',
-              cookie     : true,
-              xfbml      : true,
-              version    : 'v6.0'
-            });
-              
-            FB.AppEvents.logPageView();   
-          };
-
-          (function(d, s, id){
-             var js, fjs = d.getElementsByTagName(s)[0];
-             if (d.getElementById(id)) {return;}
-             js = d.createElement(s); js.id = id;
-             js.src = "https://connect.facebook.net/en_US/sdk.js";
-             fjs.parentNode.insertBefore(js, fjs);
-           }(document, 'script', 'facebook-jssdk'));
-        </script>
-        <script type="text/javascript">
-        $("#name_play").on('input', function(e){
-            if ($("#name_play").val()) {
-                if (loadedAmount == totalAmount) {
-                    $("#button_play").prop('disabled',false);
-                }
-            } else {
-                $("#button_play").prop('disabled',true);
-            }
-        });
-        $("#button_play").click(function(){
-            if ($("#name_play").val()) {
-                $("#start_play").hide();
-                setInitCoordinates();
-                startGame();
-            }
-        });
-        $("#name_play").keypress(function(e){
-            if (e.which == 13) {
-                $("#button_play").click();
-            }
-        });
-        </script>
-        <script>
-        function myFbLogin() {
-            FB.getLoginStatus(function(response) {
-                console.log(response);
-                if (response.authResponse) {
-                    console.log('Welcome!  Fetching your information.... ');
-                    let fbID;
-                    FB.api('/me', function(response) {
-                        console.log('Good to see you, ' + response.name + '.');
-                        fbID = response.id;
-
-                        FB.api(
-                            '/'+fbID+'/picture',
-                            'GET',
-                            {"redirect":"false","type":"large","width":"400","height":"400"},
-                            function(response) {
-                                console.log(response);
-                                // Insert your code here
-                                if (response.data.url) {
-                                    fb_img = document.getElementById("fb_pic_img");
-                                    fb_img.src = response.data.url;
-                                    console.log("should set img src");
-                                }
-                        });
-                    });
-
-                    document.getElementById("fb-login-button").style.display = "none";
-                } else {
-                    console.log('User cancelled login or did not fully authorize.');
-                }
-            });
-        }
-
-        </script>
-        <script src="pixi.js"></script>
-        <script>
-            usePng8=false;
-        </script>
-        <script src="go.js"></script>
         <style>
         body {
             background: url("assets/BGtile.jpg");
@@ -170,7 +65,7 @@
         #start_play .input-group input {
             text-align: center;
         }
-        #start_play button
+        #start_play .sibac_button
         {
             margin-top: 40px;
             background-color: #93ab00;
@@ -178,5 +73,113 @@
             color: #171717;
         }
         </style>
+        <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <title>Šibačka | Veľká noc v čase COVID</title>
+        <meta name="description" content="Vyšibte svoju známu pomocou prvej online šibačky">
+    </head>
+    <body>
+        <div id="start_play">
+            <div id="alert_bar">
+            </div>
+            <div class="input-group input-group-lg">
+                <input id="name_play" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" maxlength="20" placeholder="Meno">
+            </div>
+            <button id="button_play" type="button" class="sibac_button btn btn-primary btn-lg btn-block" disabled>Hrať</button>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https://hmira.github.io/sibacka/" target="_blank" onclick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false"><button style="width:100%; margin-top:10px;" type="button" class="sibac_button btn btn-facebook btn-lg"><i class="fa fa-facebook fa-2" style="margin-right:10px;"></i> Zdieľať na facebooku</button></a>
+        </div>
+        <div id="fb_pic" class="fb_pic" style="display:none;">
+            <img alt="profile_pic" id="fb_pic_img" src="images/dummy_profile_pic.png">
+        </div>
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/sk_SK/sdk.js#xfbml=1&version=v6.0&appId=2866677673420258&autoLogAppEvents=1"></script>
+        <div id="fb-login-button" class="fb-login-button" data-width="" data-size="large" data-button-type="login_with" data-layout="rounded" data-auto-logout-link="false" data-use-continue-as="true" data-scope="user_gender,public_profile" data-onlogin='myFbLogin();' style="display:none;"></div>
+        <script>
+          window.fbAsyncInit = function() {
+            FB.init({
+              appId      : '2866677673420258',
+              cookie     : true,
+              xfbml      : true,
+              version    : 'v6.0'
+            });
+              
+            FB.AppEvents.logPageView();   
+          };
+
+          (function(d, s, id){
+             var js, fjs = d.getElementsByTagName(s)[0];
+             if (d.getElementById(id)) {return;}
+             js = d.createElement(s); js.id = id;
+             js.src = "https://connect.facebook.net/en_US/sdk.js";
+             fjs.parentNode.insertBefore(js, fjs);
+           }(document, 'script', 'facebook-jssdk'));
+        </script>
+        <script type="text/javascript">
+        $("#name_play").on('input', function(e){
+            if ($("#name_play").val()) {
+                if (loadedAmount == totalAmount) {
+                    $("#button_play").prop('disabled',false);
+                }
+            } else {
+                $("#button_play").prop('disabled',true);
+            }
+        });
+        $("#button_play").click(function(){
+            if ($("#name_play").val()) {
+                $("#start_play").hide();
+                $(".alert").alert('close');
+                setInitCoordinates();
+                startGame();
+            }
+        });
+        $("#name_play").keypress(function(e){
+            if (e.which == 13) {
+                $("#button_play").click();
+            }
+        });
+        </script>
+        <script>
+        function myFbLogin() {
+            FB.getLoginStatus(function(response) {
+                console.log(response);
+                if (response.authResponse) {
+                    console.log('Welcome!  Fetching your information.... ');
+                    let fbID;
+                    FB.api('/me', function(response) {
+                        console.log('Good to see you, ' + response.name + '.');
+                        fbID = response.id;
+
+                        FB.api(
+                            '/'+fbID+'/picture',
+                            'GET',
+                            {"redirect":"false","type":"large","width":"400","height":"400"},
+                            function(response) {
+                                console.log(response);
+                                // Insert your code here
+                                if (response.data.url) {
+                                    fb_img = document.getElementById("fb_pic_img");
+                                    fb_img.src = response.data.url;
+                                    console.log("should set img src");
+                                }
+                        });
+                    });
+
+                    document.getElementById("fb-login-button").style.display = "none";
+                } else {
+                    console.log('User cancelled login or did not fully authorize.');
+                }
+            });
+        }
+
+        </script>
+        <script src="pixi.js"></script>
+        <script>
+            usePng8=false;
+        </script>
+        <script src="go.js"></script>
     </body>
 </html>
