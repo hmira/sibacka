@@ -58,7 +58,10 @@
             }
         });
         $("#button_play").click(function(){
-            console.log("kokot");
+            if ($("#name_play").val()) {
+                $("#start_play").hide();
+                startGame();
+            }
         });
         </script>
         <script>
