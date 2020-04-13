@@ -10,6 +10,8 @@ const STATE_JUMP_START = 2;
 const STATE_JUMP_END = 3;
 const STATE_JUMPING = 4;
 const STATE_WRENCHES = 5;
+const STATE_WON = 6;
+const STATE_DEVA = 7;
 
 
 window.addEventListener("resize", resize(app));
@@ -22,7 +24,9 @@ let bronzeEgg, silverEgg, goldEgg;
 
 let topBackgroundOffset;
 
-let suhajWalk, suhajJump, suhajWrenches;
+let suhajWalk, suhajJump, suhajWrenches, suhajSibac;
+
+let devaDance;
 
 let explosion;
 
@@ -81,6 +85,109 @@ const suhajWrenchesFrames = [
 "assets/suhaj_wrenches_fps/hit_by_wrenches_60fps_060.png",
 "assets/suhaj_wrenches_fps/hit_by_wrenches_60fps_061.png"];
 
+
+const suhajSibacFrames = [
+"assets/suhaj_sibac/suhaj_sibac_000.png",
+"assets/suhaj_sibac/suhaj_sibac_001.png",
+"assets/suhaj_sibac/suhaj_sibac_002.png",
+"assets/suhaj_sibac/suhaj_sibac_003.png",
+"assets/suhaj_sibac/suhaj_sibac_004.png",
+"assets/suhaj_sibac/suhaj_sibac_005.png",
+"assets/suhaj_sibac/suhaj_sibac_006.png",
+"assets/suhaj_sibac/suhaj_sibac_007.png",
+"assets/suhaj_sibac/suhaj_sibac_008.png",
+"assets/suhaj_sibac/suhaj_sibac_009.png",
+"assets/suhaj_sibac/suhaj_sibac_010.png",
+"assets/suhaj_sibac/suhaj_sibac_011.png",
+"assets/suhaj_sibac/suhaj_sibac_012.png",
+"assets/suhaj_sibac/suhaj_sibac_013.png",
+"assets/suhaj_sibac/suhaj_sibac_014.png",
+"assets/suhaj_sibac/suhaj_sibac_015.png",
+"assets/suhaj_sibac/suhaj_sibac_016.png",
+"assets/suhaj_sibac/suhaj_sibac_017.png",
+"assets/suhaj_sibac/suhaj_sibac_018.png",
+"assets/suhaj_sibac/suhaj_sibac_019.png",
+"assets/suhaj_sibac/suhaj_sibac_020.png",
+"assets/suhaj_sibac/suhaj_sibac_021.png",
+"assets/suhaj_sibac/suhaj_sibac_022.png",
+"assets/suhaj_sibac/suhaj_sibac_023.png",
+"assets/suhaj_sibac/suhaj_sibac_024.png",
+"assets/suhaj_sibac/suhaj_sibac_025.png",
+"assets/suhaj_sibac/suhaj_sibac_026.png",
+"assets/suhaj_sibac/suhaj_sibac_027.png",
+"assets/suhaj_sibac/suhaj_sibac_028.png",
+"assets/suhaj_sibac/suhaj_sibac_029.png",
+"assets/suhaj_sibac/suhaj_sibac_030.png",
+"assets/suhaj_sibac/suhaj_sibac_031.png",
+"assets/suhaj_sibac/suhaj_sibac_032.png",
+"assets/suhaj_sibac/suhaj_sibac_033.png",
+"assets/suhaj_sibac/suhaj_sibac_034.png",
+"assets/suhaj_sibac/suhaj_sibac_035.png",
+"assets/suhaj_sibac/suhaj_sibac_036.png",
+"assets/suhaj_sibac/suhaj_sibac_037.png",
+"assets/suhaj_sibac/suhaj_sibac_038.png",
+"assets/suhaj_sibac/suhaj_sibac_039.png",
+"assets/suhaj_sibac/suhaj_sibac_040.png",
+"assets/suhaj_sibac/suhaj_sibac_041.png",
+"assets/suhaj_sibac/suhaj_sibac_042.png",
+"assets/suhaj_sibac/suhaj_sibac_043.png",
+"assets/suhaj_sibac/suhaj_sibac_044.png",
+"assets/suhaj_sibac/suhaj_sibac_045.png",
+"assets/suhaj_sibac/suhaj_sibac_046.png",
+"assets/suhaj_sibac/suhaj_sibac_047.png",
+"assets/suhaj_sibac/suhaj_sibac_048.png",
+"assets/suhaj_sibac/suhaj_sibac_049.png",
+"assets/suhaj_sibac/suhaj_sibac_050.png",
+"assets/suhaj_sibac/suhaj_sibac_051.png",
+"assets/suhaj_sibac/suhaj_sibac_052.png",
+"assets/suhaj_sibac/suhaj_sibac_053.png",
+"assets/suhaj_sibac/suhaj_sibac_054.png",
+"assets/suhaj_sibac/suhaj_sibac_055.png",
+"assets/suhaj_sibac/suhaj_sibac_056.png",
+"assets/suhaj_sibac/suhaj_sibac_057.png",
+"assets/suhaj_sibac/suhaj_sibac_058.png",
+"assets/suhaj_sibac/suhaj_sibac_059.png",
+"assets/suhaj_sibac/suhaj_sibac_060.png",
+"assets/suhaj_sibac/suhaj_sibac_061.png",
+"assets/suhaj_sibac/suhaj_sibac_062.png",
+"assets/suhaj_sibac/suhaj_sibac_063.png",
+"assets/suhaj_sibac/suhaj_sibac_064.png",
+"assets/suhaj_sibac/suhaj_sibac_065.png",
+"assets/suhaj_sibac/suhaj_sibac_066.png",
+"assets/suhaj_sibac/suhaj_sibac_067.png",
+"assets/suhaj_sibac/suhaj_sibac_068.png",
+"assets/suhaj_sibac/suhaj_sibac_069.png",
+"assets/suhaj_sibac/suhaj_sibac_070.png",
+"assets/suhaj_sibac/suhaj_sibac_071.png",
+"assets/suhaj_sibac/suhaj_sibac_072.png",
+"assets/suhaj_sibac/suhaj_sibac_073.png",
+"assets/suhaj_sibac/suhaj_sibac_074.png",
+"assets/suhaj_sibac/suhaj_sibac_075.png",
+"assets/suhaj_sibac/suhaj_sibac_076.png",
+"assets/suhaj_sibac/suhaj_sibac_077.png",
+"assets/suhaj_sibac/suhaj_sibac_078.png",
+"assets/suhaj_sibac/suhaj_sibac_079.png",
+"assets/suhaj_sibac/suhaj_sibac_080.png",
+"assets/suhaj_sibac/suhaj_sibac_081.png",
+"assets/suhaj_sibac/suhaj_sibac_082.png",
+"assets/suhaj_sibac/suhaj_sibac_083.png",
+"assets/suhaj_sibac/suhaj_sibac_084.png",
+"assets/suhaj_sibac/suhaj_sibac_085.png",
+"assets/suhaj_sibac/suhaj_sibac_086.png",
+"assets/suhaj_sibac/suhaj_sibac_087.png",
+"assets/suhaj_sibac/suhaj_sibac_088.png",
+"assets/suhaj_sibac/suhaj_sibac_089.png",
+"assets/suhaj_sibac/suhaj_sibac_090.png",
+"assets/suhaj_sibac/suhaj_sibac_091.png",
+"assets/suhaj_sibac/suhaj_sibac_092.png",
+"assets/suhaj_sibac/suhaj_sibac_093.png",
+"assets/suhaj_sibac/suhaj_sibac_094.png",
+"assets/suhaj_sibac/suhaj_sibac_095.png",
+"assets/suhaj_sibac/suhaj_sibac_096.png",
+"assets/suhaj_sibac/suhaj_sibac_097.png",
+"assets/suhaj_sibac/suhaj_sibac_098.png",
+"assets/suhaj_sibac/suhaj_sibac_099.png"];
+
 // load sprite sheet image + data file, call setup() if completed
 PIXI.Loader.shared
     .add("assets/background.json")
@@ -88,7 +195,9 @@ PIXI.Loader.shared
     .add("assets/suhaj_jump.json")
     .add("assets/suhaj_wrenches.json")
     .add("assets/explosion.json")
+    .add("assets/deva_dance.json")
     .add(suhajWrenchesFrames)
+    .add(suhajSibacFrames)
     .load(setup);
 
 
@@ -99,6 +208,8 @@ function setup() {
     let suhajWalkSheet = PIXI.Loader.shared.resources["assets/suhaj_walk.json"].spritesheet;
     let suhajJumpSheet = PIXI.Loader.shared.resources["assets/suhaj_jump.json"].spritesheet;
     let suhajWrenchesSheet = PIXI.Loader.shared.resources["assets/suhaj_wrenches.json"].spritesheet;
+
+    let devaDanceSheet = PIXI.Loader.shared.resources["assets/deva_dance.json"].spritesheet;
 
     let explosionSheet = PIXI.Loader.shared.resources["assets/explosion.json"].spritesheet;
 
@@ -128,8 +239,16 @@ function setup() {
     suhajJump.onComplete = function() {
         suhajState = STATE_WALKING;
         updateSpritesByState();
-        console.log("jump ends");
     };
+
+    devaDance = new PIXI.AnimatedSprite(devaDanceSheet.animations["deva_dance"]);
+    devaDance.position.set(background.width + 304, background.height - suhajYoffset);
+    devaDance.animationSpeed = 1;
+    devaDance.renderable = true;
+    devaDance.scale.set(1.5);
+    devaDance.loop = true;
+    devaDance.anchor.set(0.22798,0.99);
+    devaDance.play();
 
     suhajWrenches = PIXI.AnimatedSprite.fromFrames(suhajWrenchesFrames);
     suhajWrenches.anchor.set(0.32302,0.72196)
@@ -141,6 +260,17 @@ function setup() {
     suhajWrenches.onComplete = function() {
         suhajState = STATE_WALKING;
         updateSpritesByState();
+    };
+
+    suhajSibac = PIXI.AnimatedSprite.fromFrames(suhajSibacFrames);
+    suhajSibac.anchor.set(0.5,0.96815)
+    suhajSibac.position.set(400, background.height - suhajYoffset);
+    suhajSibac.animationSpeed = 1;
+    suhajSibac.renderable = false;
+    suhajSibac.scale.set(1.5);
+    suhajSibac.loop = false;
+    suhajSibac.onComplete = function() {
+        suhajSibac.gotoAndPlay(60);
     };
 
     bronzeEgg = new PIXI.Sprite(sheet.textures["bronze_egg.png"]);
@@ -175,6 +305,8 @@ function setup() {
         }
         if (level == 4) {
             goldEgg.renderable = true;
+            suhajState = STATE_WON;
+            wrenches.renderable = false;
         }
         explosion.renderable = false;
     };
@@ -192,6 +324,8 @@ function setup() {
     app.stage.addChild(suhajWalk);
     app.stage.addChild(suhajWrenches);
     app.stage.addChild(suhajJump);
+    app.stage.addChild(devaDance);
+    app.stage.addChild(suhajSibac);
     app.stage.addChild(bronzeEgg);
     app.stage.addChild(silverEgg);
     app.stage.addChild(goldEgg);
@@ -207,6 +341,8 @@ function updateYs() {
     suhajWalk.y = background.height - suhajYoffset + topBackgroundOffset;
     suhajWrenches.y = background.height - suhajYoffset + topBackgroundOffset;
     suhajJump.y = background.height - suhajYoffset + topBackgroundOffset;
+    suhajSibac.y = background.height - suhajYoffset + topBackgroundOffset;
+    devaDance.y = background.height - suhajYoffset + topBackgroundOffset;
     wrenches.y = background.height - wrenchesYOffset + topBackgroundOffset;
     bush1.y = background.height - bushOffset + topBackgroundOffset;
 }
@@ -216,58 +352,77 @@ function gameLoop(delta) {
         suhajWalk.x = (suhajWalk.x + 3*delta) % (background.width + 200);
         suhajJump.x = suhajWalk.x;
         suhajWrenches.x = suhajWalk.x;
+        suhajSibac.x = suhajWalk.x;
     }
 
-    //experimental game
-    postition += 10;
-    background.x = -(postition * 0.5);
-    background.x %= WIDTH * 2;
-    if (background.x < 0) {
-        background.x += WIDTH * 2;
-    }
-    background.x -= WIDTH;
-
-    background2.x = -(postition * 0.5) + WIDTH;
-    background2.x %= WIDTH * 2;
-    if (background2.x < 0) {
-        background2.x += WIDTH * 2;
-    }
-    background2.x -= WIDTH;
-
-    wrenches.x -= 12;
-    bush1.x -= 10;
-
-    if (bush1.x < -360) {
-        bush1.x = WIDTH + 1;
-    }
-
-    if (wrenches.x < -460) {
-        wrenches.x = WIDTH + 1;
-        wrenches.renderable = true;
-
-        score += 1;
-
-        if (score == 10 ) {
-            level = 2;
-            explosion.x = bronzeEgg.x;
-            explosion.renderable = true;
-            explosion.gotoAndPlay(0);
-        } else if (score == 20 ) {
-            level = 3;
-            explosion.x = silverEgg.x;
-            explosion.renderable = true;
-            explosion.gotoAndPlay(0);
-        } else if (score == 30) {
-            level = 4;
-            explosion.x = goldEgg.x;
-            explosion.renderable = true;
-            explosion.gotoAndPlay(0);
+    if (suhajState == STATE_WON) {
+        if (devaDance.x > 800) {
+            devaDance.x -= 2 * delta;
         }
     }
 
-    if (wrenches.x > 450 && wrenches.x < 700 && suhajState == STATE_WALKING) {
-        wrenchesHit();
-        wrenches.renderable = false;
+    if (suhajState == STATE_WON) {
+        if (devaDance.x < 803 && devaDance.x > 800) {
+            suhajWalk.renderable = false;
+            suhajSibac.renderable = true;
+            suhajSibac.gotoAndPlay(0);
+            suhajState = STATE_DEVA;
+        }
+    }
+
+    if (suhajState != STATE_DEVA) {
+        postition += 10;
+        background.x = -(postition * 0.5);
+        background.x %= WIDTH * 2;
+        if (background.x < 0) {
+            background.x += WIDTH * 2;
+        }
+        background.x -= WIDTH;
+
+        background2.x = -(postition * 0.5) + WIDTH;
+        background2.x %= WIDTH * 2;
+        if (background2.x < 0) {
+            background2.x += WIDTH * 2;
+        }
+        background2.x -= WIDTH;
+
+        bush1.x -= 10;
+
+        if (bush1.x < -360) {
+            bush1.x = WIDTH + 1;
+        }
+
+        if (suhajState != STATE_WON) {
+            wrenches.x -= 12;
+            if (wrenches.x < -460) {
+                wrenches.x = WIDTH + 1;
+                wrenches.renderable = true;
+
+                score += 1;
+
+                if (score == 5 ) {
+                    level = 2;
+                    explosion.x = bronzeEgg.x;
+                    explosion.renderable = true;
+                    explosion.gotoAndPlay(0);
+                } else if (score == 10 ) {
+                    level = 3;
+                    explosion.x = silverEgg.x;
+                    explosion.renderable = true;
+                    explosion.gotoAndPlay(0);
+                } else if (score == 15) {
+                    level = 4;
+                    explosion.x = goldEgg.x;
+                    explosion.renderable = true;
+                    explosion.gotoAndPlay(0);
+                }
+            }
+
+            if (wrenches.x > 450 && wrenches.x < 700 && suhajState == STATE_WALKING) {
+                wrenchesHit();
+                wrenches.renderable = false;
+            }
+        }
     }
 }
 
@@ -299,6 +454,9 @@ function updateSpritesByState() {
         suhajWrenches.renderable = true;
         suhajWrenches.gotoAndPlay(0);
         suhajWalk.renderable = false;
+    } else if (suhajState == STATE_WON) {
+        suhajWalk.renderable = false;
+        suhajJump.renderable = false;
     }
 }
 
