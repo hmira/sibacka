@@ -40,7 +40,7 @@ let lost = false;
 let hits = 0;
 
 let loadedAmount = 0;
-const totalAmount = 9;
+const totalAmount = 1368;
 
 const suhajYoffset = 100;
 const wrenchesYOffset = 178;
@@ -194,22 +194,22 @@ const suhajSibacFrames = [
 "assets/suhaj_sibac/suhaj_sibac_099.png"];
 
 var startDate = new Date();
-PIXI.Loader.shared.add("assets/background.json").onComplete.add(handleLoad);
-PIXI.Loader.shared.add("assets/suhaj_walk.json").onComplete.add(handleLoad);
-PIXI.Loader.shared.add("assets/suhaj_jump.json").onComplete.add(handleLoad);
-PIXI.Loader.shared.add("assets/suhaj_wrenches.json").onComplete.add(handleLoad);
-PIXI.Loader.shared.add("assets/explosion.json").onComplete.add(handleLoad);
-PIXI.Loader.shared.add("assets/deva_dance.json").onComplete.add(handleLoad);
-PIXI.Loader.shared.add("assets/suhaj_head.png").onComplete.add(handleLoad);
-PIXI.Loader.shared.add(suhajWrenchesFrames).onComplete.add(handleLoad);
-PIXI.Loader.shared.add(suhajSibacFrames).onComplete.add(handleLoad);
+PIXI.Loader.shared.add("assets/background.json").onLoad.add(handleLoad);
+PIXI.Loader.shared.add("assets/suhaj_walk.json").onLoad.add(handleLoad);
+PIXI.Loader.shared.add("assets/suhaj_jump.json").onLoad.add(handleLoad);
+PIXI.Loader.shared.add("assets/suhaj_wrenches.json").onLoad.add(handleLoad);
+PIXI.Loader.shared.add("assets/explosion.json").onLoad.add(handleLoad);
+PIXI.Loader.shared.add("assets/deva_dance.json").onLoad.add(handleLoad);
+PIXI.Loader.shared.add("assets/suhaj_head.png").onLoad.add(handleLoad);
+PIXI.Loader.shared.add(suhajWrenchesFrames).onLoad.add(handleLoad);
+PIXI.Loader.shared.add(suhajSibacFrames).onLoad.add(handleLoad);
 PIXI.Loader.shared.load(setup);
 
 function handleLoad() {
     // console.log("module loaded", (new Date() - startDate.getTime()));
     loadedAmount++;
     var percent = loadedAmount / totalAmount * 100;
-    $("#button_play").text("Hrať (načítava sa"+ percent +"%)");
+    $("#button_play").text("Hrať (načítava sa "+ Math.round(percent) +"%)");
 }
 
 
