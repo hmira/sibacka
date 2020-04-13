@@ -56,7 +56,9 @@
         <script type="text/javascript">
         $("#name_play").on('input', function(e){
             if ($("#name_play").val()) {
-                $("#button_play").prop('disabled',false);
+                if (loadedAmount == totalAmount) {
+                    $("#button_play").prop('disabled',false);
+                }
             } else {
                 $("#button_play").prop('disabled',true);
             }

@@ -210,6 +210,11 @@ function handleLoad() {
     loadedAmount++;
     var percent = loadedAmount / totalAmount * 100;
     $("#button_play").text("Hrať (načítava sa "+ Math.round(percent) +"%)");
+
+    if (loadedAmount == totalAmount) {
+        $("#button_play").text("Hrať");
+        $("#name_play").trigger("input");
+    }
 }
 
 
