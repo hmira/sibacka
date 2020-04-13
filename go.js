@@ -19,7 +19,7 @@ window.addEventListener("resize", resize(app));
 
 document.body.appendChild(app.view);
 
-let animatedCapguy, walkingGuy, jumpGuyStart, jumpGuyEnd, background, background2, wrenches, bush1;
+let animatedCapguy, walkingGuy, jumpGuyStart, jumpGuyEnd, background, background2, wrenches, bush1, suhajHead1, suhajHead2;
 
 let bronzeEgg, silverEgg, goldEgg;
 
@@ -38,6 +38,9 @@ let suhajState = STATE_NONE;
 let score = 0;
 let level = 1;
 let wrenchesActive = false;
+let lost = false;
+
+let hits = 0;
 
 const suhajYoffset = 100;
 const wrenchesYOffset = 178;
@@ -190,7 +193,6 @@ const suhajSibacFrames = [
 "assets/suhaj_sibac/suhaj_sibac_098.png",
 "assets/suhaj_sibac/suhaj_sibac_099.png"];
 
-// load sprite sheet image + data file, call setup() if completed
 PIXI.Loader.shared
     .add("assets/background.json")
     .add("assets/suhaj_walk.json")
@@ -198,6 +200,7 @@ PIXI.Loader.shared
     .add("assets/suhaj_wrenches.json")
     .add("assets/explosion.json")
     .add("assets/deva_dance.json")
+    .add("assets/suhaj_head.png")
     .add(suhajWrenchesFrames)
     .add(suhajSibacFrames)
     .load(setup);
@@ -250,6 +253,15 @@ function setup() {
     suhajWrenches.onComplete = function() {
         suhajState = STATE_WALKING;
         updateSpritesByState();
+        if (hits == 1) {
+            suhajHead2.renderable = false;
+        }
+        if (hits == 2) {
+            suhajHead1.renderable = false;
+        }
+        if (hits == 3) {
+            lose();
+        }
     };
 
     suhajSibac = PIXI.AnimatedSprite.fromFrames(suhajSibacFrames);
@@ -258,6 +270,7 @@ function setup() {
     suhajSibac.loop = false;
     suhajSibac.onComplete = function() {
         suhajSibac.gotoAndPlay(60);
+        $("#start_play").fadeIn();
     };
 
     bronzeEgg = new PIXI.Sprite(sheet.textures["bronze_egg.png"]);
@@ -301,6 +314,14 @@ function setup() {
     bush1 = new PIXI.Sprite(sheet.textures["bush.png"]);
     bush1.scale.set(2);
 
+    suhajHead1 = new PIXI.Sprite(PIXI.Texture.fromImage("assets/suhaj_head.png"));
+    suhajHead1.position.set(10,10);
+    suhajHead1.renderable = false;
+
+    suhajHead2 = new PIXI.Sprite(PIXI.Texture.fromImage("assets/suhaj_head.png"));
+    suhajHead2.position.set(120,10);
+    suhajHead2.renderable = false;
+
     setInitCoordinates();
 
     // add it to the stage and render!
@@ -315,6 +336,8 @@ function setup() {
     app.stage.addChild(goldEgg);
     app.stage.addChild(explosion);
     app.stage.addChild(bush1);
+    app.stage.addChild(suhajHead1);
+    app.stage.addChild(suhajHead2);
     app.ticker.add(delta => gameLoop(delta));
 }
 
@@ -340,12 +363,18 @@ function setInitCoordinates() {
     bronzeEgg.renderable = false;
     silverEgg.renderable = false;
     goldEgg.renderable = false;
+    lost = false;
 
     resize(app).call();
 }
 
 function startGame() {
     suhajState = STATE_WALKING;
+
+    hits = 0;
+    suhajHead1.renderable = true;
+    suhajHead2.renderable = true;
+    suhajSibac.gotoAndStop(0);
 }
 
 function updateYs() {
@@ -373,7 +402,9 @@ function gameLoop(delta) {
     }
 
     if (suhajWalk.x < (background.width / 2) + 10 && suhajWalk.x > (background.width / 2) - 10) {
-        wrenchesActive = true;
+        if (!lost) {
+            wrenchesActive = true;
+        }
     }
 
     if (suhajState == STATE_WON) {
@@ -450,6 +481,7 @@ function gameLoop(delta) {
 function wrenchesHit() {
     suhajState = STATE_WRENCHES;
     updateSpritesByState();
+    hits++;
 }
 
 function jump() {
@@ -459,10 +491,21 @@ function jump() {
     suhajState = STATE_JUMPING;
     updateSpritesByState();
 }
+
+function lose() {
+    suhajState = STATE_WALKING;
+    updateSpritesByState();
+    devaDance.renderable = false;
+    suhajSibac.renderable = false;
+    lost = true;
+    wrenchesActive = false;
+    $("#start_play").fadeIn();
+}
+
 app.renderer.plugins.interaction.on('pointerdown', jump);
 document.addEventListener('keydown', onKeyDown);
 function onKeyDown(key) {
-    if (key.keyCode === 13) {
+    if (key.keyCode === 13 || key.keyCode === 32) {
         jump();
     }
 }
@@ -494,15 +537,7 @@ function resize (app) {
     let nvw; // New game width
     let nvh; // New game height
 
-    // The aspect ratio is the ratio of the screen's sizes in different dimensions.
-    // The height-to-width aspect ratio of the game is HEIGHT / WIDTH.
-    
     if (vph / vpw < HEIGHT / WIDTH) {
-      // If height-to-width ratio of the viewport is less than the height-to-width ratio
-      // of the game, then the height will be equal to the height of the viewport, and
-      // the width will be scaled.
-      // nvh = vph;
-      // nvw = (nvh * WIDTH) / HEIGHT;
 
       nvh = vph;
       nvw = vpw;

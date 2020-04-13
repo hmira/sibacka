@@ -24,14 +24,14 @@
                 <input id="name_play" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" maxlength="20" placeholder="Meno">
             </div>
             <button id="button_play" type="button" class="btn btn-primary btn-lg btn-block" disabled>Hrať</button>
-            <a href="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https://hmira.github.io/sibacka/" target="_blank" onclick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false"><button style="width:100%; margin-top:10px;" type="button" class="btn btn-facebook btn-lg"><i class="fa fa-facebook fa-2"></i> Zdieľať na facebooku</button></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https://hmira.github.io/sibacka/" target="_blank" onclick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false"><button style="width:100%; margin-top:10px;" type="button" class="btn btn-facebook btn-lg"><i class="fa fa-facebook fa-2" style="margin-right:10px;"></i> Zdieľať na facebooku</button></a>
         </div>
-        <div id="fb_pic" class="fb_pic">
+        <div id="fb_pic" class="fb_pic" style="display:none;">
             <img alt="profile_pic" id="fb_pic_img" src="images/dummy_profile_pic.png">
         </div>
         <div id="fb-root"></div>
         <script async defer crossorigin="anonymous" src="https://connect.facebook.net/sk_SK/sdk.js#xfbml=1&version=v6.0&appId=2866677673420258&autoLogAppEvents=1"></script>
-        <div id="fb-login-button" class="fb-login-button" data-width="" data-size="large" data-button-type="login_with" data-layout="rounded" data-auto-logout-link="false" data-use-continue-as="true" data-scope="user_gender,public_profile" data-onlogin='myFbLogin();'></div>
+        <div id="fb-login-button" class="fb-login-button" data-width="" data-size="large" data-button-type="login_with" data-layout="rounded" data-auto-logout-link="false" data-use-continue-as="true" data-scope="user_gender,public_profile" data-onlogin='myFbLogin();' style="display:none;"></div>
         <script>
           window.fbAsyncInit = function() {
             FB.init({
@@ -63,6 +63,7 @@
         $("#button_play").click(function(){
             if ($("#name_play").val()) {
                 $("#start_play").hide();
+                setInitCoordinates();
                 startGame();
             }
         });
@@ -74,8 +75,6 @@
         </script>
         <script>
         function myFbLogin() {
-            console.log("myFbLogin starts");
-            //FB.login(function(response) {
             FB.getLoginStatus(function(response) {
                 console.log(response);
                 if (response.authResponse) {
@@ -105,44 +104,8 @@
                     console.log('User cancelled login or did not fully authorize.');
                 }
             });
-
-            // FB.login();
-            // let fbID;
-            // FB.api('/me', function(response) {
-            //     fbID=response.id;
-            //     console.log('Successful login for: ' + response.name);
-            // });
-
-            // console.log(fbID);
-
-            // FB.api(
-            //     '/'+fbID+'/picture',
-            //     'GET',
-            //     {"redirect":"false","type":"large","width":"400","height":"400"},
-            //     function(response) {
-            //         console.log(response);
-            //         // Insert your code here
-            //         if (response.data.url) {
-            //             fb_img = document.getElementById("fb_pic_img");
-            //             fb_img.src = response.data.url;
-            //             console.log("should set img src");
-            //         }
-            //     });
         }
 
-        function getData() {
-            const userAction = async () => {
-                const response = await fetch('http://example.com/movies.json', {
-                    method: 'POST',
-                    body: myBody, // string or object
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                });
-                const myJson = await response.json(); //extract JSON from the http response
-                // do something with myJson
-            }
-        }
         </script>
         <script src="pixi.js"></script>
         <script>
