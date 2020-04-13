@@ -40,6 +40,7 @@ let lost = false;
 let hits = 0;
 
 let loadedAmount = 0;
+const totalAmount = 9;
 
 const suhajYoffset = 100;
 const wrenchesYOffset = 178;
@@ -193,26 +194,23 @@ const suhajSibacFrames = [
 "assets/suhaj_sibac/suhaj_sibac_099.png"];
 
 var startDate = new Date();
-PIXI.Loader.shared.add("assets/background.json");
-console.log("module loaded", (new Date() - startDate.getTime()));
-PIXI.Loader.shared.add("assets/suhaj_walk.json");
-console.log("module loaded", (new Date() - startDate.getTime()));
-PIXI.Loader.shared.add("assets/suhaj_jump.json");
-console.log("module loaded", (new Date() - startDate.getTime()));
-PIXI.Loader.shared.add("assets/suhaj_wrenches.json");
-console.log("module loaded", (new Date() - startDate.getTime()));
-PIXI.Loader.shared.add("assets/explosion.json");
-console.log("module loaded", (new Date() - startDate.getTime()));
-PIXI.Loader.shared.add("assets/deva_dance.json");
-console.log("module loaded", (new Date() - startDate.getTime()));
-PIXI.Loader.shared.add("assets/suhaj_head.png");
-console.log("module loaded", (new Date() - startDate.getTime()));
-PIXI.Loader.shared.add(suhajWrenchesFrames);
-console.log("module loaded", (new Date() - startDate.getTime()));
-PIXI.Loader.shared.add(suhajSibacFrames);
-console.log("module loaded", (new Date() - startDate.getTime()));
+PIXI.Loader.shared.add("assets/background.json").onComplete.add(handleLoad);
+PIXI.Loader.shared.add("assets/suhaj_walk.json").onComplete.add(handleLoad);
+PIXI.Loader.shared.add("assets/suhaj_jump.json").onComplete.add(handleLoad);
+PIXI.Loader.shared.add("assets/suhaj_wrenches.json").onComplete.add(handleLoad);
+PIXI.Loader.shared.add("assets/explosion.json").onComplete.add(handleLoad);
+PIXI.Loader.shared.add("assets/deva_dance.json").onComplete.add(handleLoad);
+PIXI.Loader.shared.add("assets/suhaj_head.png").onComplete.add(handleLoad);
+PIXI.Loader.shared.add(suhajWrenchesFrames).onComplete.add(handleLoad);
+PIXI.Loader.shared.add(suhajSibacFrames).onComplete.add(handleLoad);
 PIXI.Loader.shared.load(setup);
-console.log("module loaded", (new Date() - startDate.getTime()));
+
+function handleLoad() {
+    // console.log("module loaded", (new Date() - startDate.getTime()));
+    loadedAmount++;
+    var percent = loadedAmount / totalAmount * 100;
+    $("#button_play").text("Hrať (načítava sa"+ percent +"%)");
+}
 
 
 function setup() {
