@@ -32,15 +32,14 @@ let devaDance;
 let explosion;
 
 let postition = 0;
-
 let suhajState = STATE_NONE;
-
 let score = 0;
 let level = 1;
 let wrenchesActive = false;
 let lost = false;
-
 let hits = 0;
+
+let loadedAmount = 0;
 
 const suhajYoffset = 100;
 const wrenchesYOffset = 178;
@@ -193,20 +192,31 @@ const suhajSibacFrames = [
 "assets/suhaj_sibac/suhaj_sibac_098.png",
 "assets/suhaj_sibac/suhaj_sibac_099.png"];
 
-PIXI.Loader.shared
-    .add("assets/background.json")
-    .add("assets/suhaj_walk.json")
-    .add("assets/suhaj_jump.json")
-    .add("assets/suhaj_wrenches.json")
-    .add("assets/explosion.json")
-    .add("assets/deva_dance.json")
-    .add("assets/suhaj_head.png")
-    .add(suhajWrenchesFrames)
-    .add(suhajSibacFrames)
-    .load(setup);
+var startDate = new Date();
+PIXI.Loader.shared.add("assets/background.json");
+console.log("module loaded", (new Date() - startDate.getTime()));
+PIXI.Loader.shared.add("assets/suhaj_walk.json");
+console.log("module loaded", (new Date() - startDate.getTime()));
+PIXI.Loader.shared.add("assets/suhaj_jump.json");
+console.log("module loaded", (new Date() - startDate.getTime()));
+PIXI.Loader.shared.add("assets/suhaj_wrenches.json");
+console.log("module loaded", (new Date() - startDate.getTime()));
+PIXI.Loader.shared.add("assets/explosion.json");
+console.log("module loaded", (new Date() - startDate.getTime()));
+PIXI.Loader.shared.add("assets/deva_dance.json");
+console.log("module loaded", (new Date() - startDate.getTime()));
+PIXI.Loader.shared.add("assets/suhaj_head.png");
+console.log("module loaded", (new Date() - startDate.getTime()));
+PIXI.Loader.shared.add(suhajWrenchesFrames);
+console.log("module loaded", (new Date() - startDate.getTime()));
+PIXI.Loader.shared.add(suhajSibacFrames);
+console.log("module loaded", (new Date() - startDate.getTime()));
+PIXI.Loader.shared.load(setup);
+console.log("module loaded", (new Date() - startDate.getTime()));
 
 
 function setup() {
+
     // the sprite sheet we've just loaded:
     let sheet = PIXI.Loader.shared.resources["assets/background.json"].spritesheet;
 
@@ -339,6 +349,8 @@ function setup() {
     app.stage.addChild(suhajHead1);
     app.stage.addChild(suhajHead2);
     app.ticker.add(delta => gameLoop(delta));
+
+    console.log("setup finished");
 }
 
 function setInitCoordinates() {
