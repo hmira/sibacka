@@ -2,8 +2,8 @@
 // create a Pixi application
 let app = new PIXI.Application({ width: window.innerWidth, height: window.innerHeight });
 
-const HEIGHT = 1080;
-const WIDTH = 1920;
+const HEIGHT = 720;
+const WIDTH = 1280;
 
 const STATE_WALKING = 1;
 const STATE_JUMP_START = 2;
@@ -39,7 +39,7 @@ let guyState = STATE_WALKING;
 let suhajState = STATE_WALKING;
 
 
-spritesheetname = usePng8 ? "images/spritesheet-png8.json" : "images/spritesheet.json";
+// spritesheetname = usePng8 ? "images/spritesheet-png8.json" : "images/spritesheet.json";
 
 const suhajWrenchesFrames = [
 "assets/suhaj_wrenches_hq/suhaj_wrenches_000.png",
@@ -75,7 +75,7 @@ const suhajWrenchesFrames = [
 
 // load sprite sheet image + data file, call setup() if completed
 PIXI.Loader.shared
-    .add(spritesheetname)
+    .add("assets/background.json")
     .add("assets/suhaj_walk.json")
     .add("assets/suhaj_jump.json")
     .add("assets/suhaj_wrenches.json")
@@ -86,7 +86,7 @@ PIXI.Loader.shared
 
 function setup() {
     // the sprite sheet we've just loaded:
-    let sheet = PIXI.Loader.shared.resources[spritesheetname].spritesheet;
+    let sheet = PIXI.Loader.shared.resources["assets/background.json"].spritesheet;
 
     let suhajWalkSheet = PIXI.Loader.shared.resources["assets/suhaj_walk.json"].spritesheet;
     let suhajJumpSheet = PIXI.Loader.shared.resources["assets/suhaj_jump.json"].spritesheet;
@@ -95,8 +95,8 @@ function setup() {
     let explosionSheet = PIXI.Loader.shared.resources["assets/explosion.json"].spritesheet;
 
     // initialize background sprite
-    background = new PIXI.Sprite(sheet.textures["background.png"]);
-    background2 = new PIXI.Sprite(sheet.textures["background.png"]);
+    background = new PIXI.Sprite(sheet.textures["background_sibacka.png"]);
+    background2 = new PIXI.Sprite(sheet.textures["background_sibacka.png"]);
     app.stage.addChild(background, background2);
 
     // scale stage container that it fits into the view
@@ -104,19 +104,19 @@ function setup() {
     app.stage.scale.y = app.view.height / background.height;
 
     suhajWalk = new PIXI.AnimatedSprite(suhajWalkSheet.animations["suhaj_walk"]);
-    suhajWalk.position.set(400, background.height - 390);
+    suhajWalk.position.set(400, background.height - 100);
     suhajWalk.animationSpeed = 1;
     suhajWalk.renderable = true;
-    suhajWalk.scale.x = 2;
-    suhajWalk.scale.y = 2;
+    suhajWalk.scale.x = 1.5;
+    suhajWalk.scale.y = 1.5;
     suhajWalk.play();
 
     suhajJump = new PIXI.AnimatedSprite(suhajJumpSheet.animations["suhaj_jump"]);
-    suhajJump.position.set(400, background.height - 390);
+    suhajJump.position.set(400, background.height - 100);
     suhajJump.animationSpeed = 1;
     suhajJump.renderable = false;
-    suhajJump.scale.x = 2;
-    suhajJump.scale.y = 2;
+    suhajJump.scale.x = 1.5;
+    suhajJump.scale.y = 1.5;
     suhajJump.loop = false;
     suhajJump.stop();
     suhajJump.onComplete = function() {
@@ -128,11 +128,11 @@ function setup() {
 //    suhajWrenches = new PIXI.AnimatedSprite(suhajWrenchesSheet.animations["suhaj_wrenches"]);
     suhajWrenches = PIXI.AnimatedSprite.fromFrames(suhajWrenchesFrames);
     suhajWrenches.anchor.set(0.32302,0.72196)
-    suhajWrenches.position.set(400, background.height - 390);
+    suhajWrenches.position.set(400, background.height - 100);
     suhajWrenches.animationSpeed = 0.5;
     suhajWrenches.renderable = false;
-    suhajWrenches.scale.x = 2;
-    suhajWrenches.scale.y = 2;
+    suhajWrenches.scale.x = 1.5;
+    suhajWrenches.scale.y = 1.5;
     suhajWrenches.loop = false;
     suhajWrenches.onComplete = function() {
         suhajState = STATE_WALKING;
@@ -161,19 +161,19 @@ function gameLoop(delta) {
 
     //experimental game
     postition += 10;
-    background.x = -(postition * 0.6);
-    background.x %= 1286 * 2;
+    background.x = -(postition * 0.5);
+    background.x %= 1280 * 2;
     if (background.x < 0) {
-        background.x += 1286 * 2;
+        background.x += 1280 * 2;
     }
-    background.x -= 1286;
+    background.x -= 1280;
 
-    background2.x = -(postition * 0.6) + 1286;
-    background2.x %= 1286 * 2;
+    background2.x = -(postition * 0.5) + 1280;
+    background2.x %= 1280 * 2;
     if (background2.x < 0) {
-        background2.x += 1286 * 2;
+        background2.x += 1280 * 2;
     }
-    background2.x -= 1286;
+    background2.x -= 1280;
 }
 
 function wrenchesHit() {
