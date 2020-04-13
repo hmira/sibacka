@@ -3,11 +3,21 @@
     <head>
         <meta charset="utf-8">
         <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <title>Šibačka | Veľká noc v čase COVID</title>
         <meta name="description" content="Vyšibte svoju známu pomocou prvej online šibačky">
     </head>
     <body>
+        <div id="start_play">
+            <div class="input-group input-group-lg">
+                <input id="name_play" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" maxlength="20" placeholder="Meno">
+            </div>
+            <button id="button_play" type="button" class="btn btn-primary btn-lg btn-block" disabled>Hrať</button>
+        </div>
         <div id="fb_pic" class="fb_pic">
             <img alt="profile_pic" id="fb_pic_img" src="images/dummy_profile_pic.png">
         </div>
@@ -33,6 +43,15 @@
              js.src = "https://connect.facebook.net/en_US/sdk.js";
              fjs.parentNode.insertBefore(js, fjs);
            }(document, 'script', 'facebook-jssdk'));
+        </script>
+        <script type="text/javascript">
+        $("#name_play").on('input', function(e){
+            if ($("#name_play").val()) {
+                $("#button_play").prop('disabled',false);
+            } else {
+                $("#button_play").prop('disabled',true);
+            }
+        });
         </script>
         <script>
         function myFbLogin() {
@@ -145,6 +164,32 @@
             position: absolute;
             top: 25px;
             left: 100px;
+        }
+        #start_play {
+            width: 380px;
+            height: 240px;
+            border: 4px solid #c6e700a3;
+            text-align: left;
+            border-radius: 20px;
+            position: fixed;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #c6e700c4;
+            padding: 20px;
+        }
+        #start_play .input-group {
+            margin-top: 30px;
+        }
+        #start_play .input-group input {
+            text-align: center;
+        }
+        #start_play button
+        {
+            margin-top: 40px;
+            background-color: #93ab00;
+            border-color: #728500;
+            color: #171717;
         }
         </style>
     </body>

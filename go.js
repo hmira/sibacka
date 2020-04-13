@@ -5,6 +5,7 @@ let app = new PIXI.Application({ width: window.innerWidth, height: window.innerH
 const HEIGHT = 720;
 const WIDTH = 1280;
 
+const STATE_NONE = -1;
 const STATE_WALKING = 1;
 const STATE_JUMP_START = 2;
 const STATE_JUMP_END = 3;
@@ -32,7 +33,7 @@ let explosion;
 
 let postition = 0;
 
-let suhajState = STATE_WALKING;
+let suhajState = STATE_NONE;
 
 let score = 0;
 let level = 1;
@@ -223,7 +224,7 @@ function setup() {
     app.stage.scale.y = app.view.height / background.height;
 
     suhajWalk = new PIXI.AnimatedSprite(suhajWalkSheet.animations["suhaj_walk"]);
-    suhajWalk.position.set(400, background.height - suhajYoffset);
+    suhajWalk.position.set(-302, background.height - suhajYoffset);
     suhajWalk.animationSpeed = 1;
     suhajWalk.renderable = true;
     suhajWalk.scale.set(1.5);
@@ -336,6 +337,10 @@ function setup() {
     resize(app).call();
 }
 
+function startGame() {
+    suhajState = STATE_WALKING;
+}
+
 function updateYs() {
     background.y = background2.y = topBackgroundOffset;
     suhajWalk.y = background.height - suhajYoffset + topBackgroundOffset;
@@ -348,6 +353,11 @@ function updateYs() {
 }
 
 function gameLoop(delta) {
+
+    if (suhajState == STATE_NONE) {
+        return;
+    }
+
     if (suhajWalk.x < background.width / 2) {
         suhajWalk.x = (suhajWalk.x + 3*delta) % (background.width + 200);
         suhajJump.x = suhajWalk.x;
