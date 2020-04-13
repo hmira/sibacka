@@ -1,6 +1,6 @@
 
 // create a Pixi application
-let app = new PIXI.Application({ width: window.innerWidth, height: window.innerHeight });
+let app = new PIXI.Application({ width: window.innerWidth, height: window.innerHeight, backgroundColor: 0xc1daf9 });
 
 const HEIGHT = 720;
 const WIDTH = 1280;
@@ -11,22 +11,14 @@ const STATE_JUMP_END = 3;
 const STATE_JUMPING = 4;
 const STATE_WRENCHES = 5;
 
-resize(app);
-// Add event listener so that our resize function runs every time the
-// browser window is resized.
+
 window.addEventListener("resize", resize(app));
 
-
-// window.addEventListener("resize", function() {
-//     console.log("resized");
-//     app.renderer.resize(window.innerWidth, window.innerHeight);
-// });
-
-
-// add the canvas that Pixi automatically created for you to the HTML document
 document.body.appendChild(app.view);
 
 let animatedCapguy, walkingGuy, jumpGuyStart, jumpGuyEnd, background, background2, spritesheetname;
+
+let topBackgroundOffset;
 
 let suhajWalk, suhajJump, suhajWrenches;
 
@@ -34,10 +26,7 @@ let explosion;
 
 let postition = 0;
 
-let guyState = STATE_WALKING;
-
 let suhajState = STATE_WALKING;
-
 
 // spritesheetname = usePng8 ? "images/spritesheet-png8.json" : "images/spritesheet.json";
 
@@ -150,6 +139,15 @@ function setup() {
     app.stage.addChild(suhajJump);
     app.stage.addChild(explosion);
     app.ticker.add(delta => gameLoop(delta));
+
+    resize(app).call();
+}
+
+function updateYs() {
+    background.y = background2.y = topBackgroundOffset;
+    suhajWalk.y = background.height - 100 + topBackgroundOffset;
+    suhajWrenches.y = background.height - 100 + topBackgroundOffset;
+    suhajJump.y = background.height - 100 + topBackgroundOffset;
 }
 
 function gameLoop(delta) {
@@ -222,8 +220,11 @@ function resize (app) {
       // If height-to-width ratio of the viewport is less than the height-to-width ratio
       // of the game, then the height will be equal to the height of the viewport, and
       // the width will be scaled.
+      // nvh = vph;
+      // nvw = (nvh * WIDTH) / HEIGHT;
+
       nvh = vph;
-      nvw = (nvh * WIDTH) / HEIGHT;
+      nvw = vpw;
     } else {
       // In the else case, the opposite is happening.
       nvw = vpw;
@@ -233,9 +234,19 @@ function resize (app) {
     // Set the game screen size to the new values.
     // This command only makes the screen bigger --- it does not scale the contents of the game.
     // There will be a lot of extra room --- or missing room --- if we don't scale the stage.
-    app.renderer.resize(nvw, nvh);
+    
+    // app.renderer.resize(nvw, nvh);
     
     // This command scales the stage to fit the new size of the game.
     app.stage.scale.set(nvw / WIDTH, nvh / HEIGHT);
+
+    app.renderer.resize(nvw, window.innerHeight);
+
+    topBackgroundOffset = ((window.innerHeight - nvh) * HEIGHT) / nvh;
+
+    console.log(nvh);
+    updateYs();
+    // console.log("resize:")
+    // console.log(WIDTH, HEIGHT, nvw, nvh, vpw, vph);
   };
 }

@@ -6,13 +6,6 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <title>Šibačka | Veľká noc v čase COVID</title>
         <meta name="description" content="Vyšibte svoju známu pomocou prvej online šibačky">
-        <style>
-        body {
-            background: url("assets/BGtile.jpg");
-            margin: 0;
-            padding: 0;
-        }
-        </style>
     </head>
     <body>
         <div id="fb_pic" class="fb_pic" style="background: red;width: 60px;height: 60px;position: absolute;top: 10px;left: 10px;border-radius: 50%;border: 2px solid black;">
@@ -40,8 +33,6 @@
              js.src = "https://connect.facebook.net/en_US/sdk.js";
              fjs.parentNode.insertBefore(js, fjs);
            }(document, 'script', 'facebook-jssdk'));
-
-          console.log("helou");
         </script>
         <script>
         function myFbLogin() {
@@ -121,6 +112,16 @@
         </script>
         <script src="go.js"></script>
         <style>
+        body {
+            background: url("assets/BGtile.jpg");
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        canvas {
+            margin: 0;
+            padding: 0;
+        }
         #fb_pic
         {
             background: red;
