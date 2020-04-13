@@ -225,16 +225,10 @@ function setup() {
     app.stage.scale.y = app.view.height / background.height;
 
     suhajWalk = new PIXI.AnimatedSprite(suhajWalkSheet.animations["suhaj_walk"]);
-    suhajWalk.position.set(-302, background.height - suhajYoffset);
-    suhajWalk.animationSpeed = 1;
-    suhajWalk.renderable = true;
     suhajWalk.scale.set(1.5);
     suhajWalk.play();
 
     suhajJump = new PIXI.AnimatedSprite(suhajJumpSheet.animations["suhaj_jump"]);
-    suhajJump.position.set(400, background.height - suhajYoffset);
-    suhajJump.animationSpeed = 1;
-    suhajJump.renderable = false;
     suhajJump.scale.set(1.5);
     suhajJump.loop = false;
     suhajJump.stop();
@@ -244,9 +238,6 @@ function setup() {
     };
 
     devaDance = new PIXI.AnimatedSprite(devaDanceSheet.animations["deva_dance"]);
-    devaDance.position.set(background.width + 304, background.height - suhajYoffset);
-    devaDance.animationSpeed = 1;
-    devaDance.renderable = true;
     devaDance.scale.set(1.5);
     devaDance.loop = true;
     devaDance.anchor.set(0.22798,0.99);
@@ -254,9 +245,6 @@ function setup() {
 
     suhajWrenches = PIXI.AnimatedSprite.fromFrames(suhajWrenchesFrames);
     suhajWrenches.anchor.set(0.32302,0.72196)
-    suhajWrenches.position.set(400, background.height - suhajYoffset);
-    suhajWrenches.animationSpeed = 1;
-    suhajWrenches.renderable = false;
     suhajWrenches.scale.set(1.5);
     suhajWrenches.loop = false;
     suhajWrenches.onComplete = function() {
@@ -266,9 +254,6 @@ function setup() {
 
     suhajSibac = PIXI.AnimatedSprite.fromFrames(suhajSibacFrames);
     suhajSibac.anchor.set(0.5,0.96815)
-    suhajSibac.position.set(400, background.height - suhajYoffset);
-    suhajSibac.animationSpeed = 1;
-    suhajSibac.renderable = false;
     suhajSibac.scale.set(1.5);
     suhajSibac.loop = false;
     suhajSibac.onComplete = function() {
@@ -279,19 +264,16 @@ function setup() {
     bronzeEgg.anchor.set(0.5);
     bronzeEgg.scale.set(0.5);
     bronzeEgg.position.set(background.width - 100, 100);
-    bronzeEgg.renderable = false;
 
     silverEgg = new PIXI.Sprite(sheet.textures["silver_egg.png"]);
     silverEgg.anchor.set(0.5);
     silverEgg.scale.set(0.5);
     silverEgg.position.set(background.width - 200, 100);
-    silverEgg.renderable = false;
     
     goldEgg = new PIXI.Sprite(sheet.textures["gold_egg.png"]);
     goldEgg.anchor.set(0.5);
     goldEgg.scale.set(0.5);
     goldEgg.position.set(background.width - 300, 100);
-    goldEgg.renderable = false;
 
     explosion = new PIXI.AnimatedSprite(explosionSheet.animations["Explosion_Sequence_A "]);
     explosion.position.set(background.width - 100, 100);
@@ -315,11 +297,11 @@ function setup() {
 
     wrenches = new PIXI.Sprite(sheet.textures["rake.png"]);
     wrenches.scale.set(1.5);
-    wrenches.position.set(WIDTH + 1, background.height - wrenchesYOffset);
 
     bush1 = new PIXI.Sprite(sheet.textures["bush.png"]);
-    bush1.position.set(WIDTH + 1, background.height - wrenchesYOffset);
     bush1.scale.set(2);
+
+    setInitCoordinates();
 
     // add it to the stage and render!
     app.stage.addChild(wrenches);
@@ -334,6 +316,30 @@ function setup() {
     app.stage.addChild(explosion);
     app.stage.addChild(bush1);
     app.ticker.add(delta => gameLoop(delta));
+}
+
+function setInitCoordinates() {
+    score = 0;
+    level = 1;
+    suhajState = STATE_NONE;
+    wrenchesActive = false;
+
+    suhajWalk.position.set(-302, background.height - suhajYoffset);
+    suhajJump.position.set(400, background.height - suhajYoffset);
+    devaDance.position.set(background.width + 304, background.height - suhajYoffset);
+    suhajWrenches.position.set(400, background.height - suhajYoffset);
+    suhajSibac.position.set(400, background.height - suhajYoffset);
+    wrenches.position.set(WIDTH + 1, background.height - wrenchesYOffset);
+    bush1.position.set(WIDTH + 1, background.height - wrenchesYOffset);
+
+    suhajWalk.renderable = true;
+    suhajJump.renderable = false;
+    devaDance.renderable = true;
+    suhajWrenches.renderable = false;
+    suhajSibac.renderable = false;
+    bronzeEgg.renderable = false;
+    silverEgg.renderable = false;
+    goldEgg.renderable = false;
 
     resize(app).call();
 }
@@ -454,6 +460,12 @@ function jump() {
     updateSpritesByState();
 }
 app.renderer.plugins.interaction.on('pointerdown', jump);
+document.addEventListener('keydown', onKeyDown);
+function onKeyDown(key) {
+    if (key.keyCode === 13) {
+        jump();
+    }
+}
 
 function updateSpritesByState() {
     if (suhajState == STATE_WALKING) {
